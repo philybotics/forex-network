@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Forex Market</title>
+
+<style>
+:root {
+  --gap-size: 32px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif;
+  color: #000;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+}
+
+header, footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background: rgba(0,0,0,0.05);
+  gap: 12px;
+}
+
+header {
+  justify-content: space-between;
+  padding: 0 var(--gap-size);
+  gap: calc(var(--gap-size) * 2);
+  box-shadow: rgba(0,0,0,0.05) 0 2px 6px 0;
+}
+
+header #site-logo {
+  font-weight: 600;
+  font-size: 32px;
+  padding: 16px;
+  background: linear-gradient(90deg, #00bce5 0%, #2962ff 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+header input[type='search'] {
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+footer {
+  flex-direction: column;
+  padding: calc(var(--gap-size)*0.5) var(--gap-size);
+  margin-top: var(--gap-size);
+  border-top: solid 2px rgba(0,0,0,0.1);
+  justify-content: center;
+  gap: 8px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(0,0,0,0.6);
+}
+
+main {
+  display: grid;
+  width: 100%;
+  max-width: 960px;
+  padding: 0 calc(var(--gap-size)*0.5);
+  grid-template-columns: 1fr 1fr;
+  grid-gap: var(--gap-size);
+}
+
+section {
+  grid-column: span 2;
+}
+
+/* FIXED HEIGHTS (STABLE) */
+#advanced-chart { height: 500px; }
+#forex-heatmap { height: 450px; }
+#etf-heatmap { height: 450px; }
+#forex-screener { height: 500px; }
+#market-overview { height: 500px; }
+#economic-calendar { height: 425px; }
+#top-stories { height: 425px; }
+
+#ticker-tape {
+  width: 100%;
+  margin-bottom: var(--gap-size);
+  padding: 16px;
+  background: rgba(0,0,0,0.075);
+  border-radius: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  #forex-heatmap { height: 400px; }
+  #etf-heatmap { height: 400px; }
+  #forex-screener { height: 450px; }
+  #market-overview { height: 450px; }
+  #economic-calendar { height: 375px; }
+  #top-stories { height: 375px; }
+}
+
+@media (max-width: 800px) {
+  main > section {
+    grid-column: span 2;
+  }
+
+  #forex-heatmap,
+  #etf-heatmap,
+  #forex-screener,
+  #market-overview,
+  #economic-calendar,
+  #top-stories {
+    height: auto;
+    min-height: 360px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a id="site-logo" href="#">𝐏𝐇𝐈𝐋𝐘𝐁𝐎𝐓𝐈𝐂𝐒™</a>
+  <input type="search" placeholder="Search..." />
+</header>
+
+<nav id="ticker-tape">
+  <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js"></script>
+  <tv-ticker-tape symbols='FX:EURUSD,OANDA:GBPUSD,OANDA:AUDUSD,FX_IDC:CADUSD,FX_IDC:JPYUSD,FX_IDC:CNYUSD,FX_IDC:ZARUSD,FX_IDC:GHSUSD,FX_IDC:NGNUSD,FX_IDC:KESUSD'></tv-ticker-tape>
+</nav>
+
+<main>
+
+<!-- Advanced Real-Time Forex Chart -->
+<section id="advanced-chart">
+  <div class="tradingview-widget-container" style="height:100%;width:100%">
+    <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/TICKMILL-EURUSD/" target="_blank" rel="noopener nofollow"><span class="blue-text">EURUSD chart</span></a><span class="trademark"> by TradingView</span></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+    {
+      "allow_symbol_change": true,
+      "calendar": false,
+      "details": true,
+      "hide_side_toolbar": false,
+      "hide_top_toolbar": false,
+      "hide_legend": false,
+      "hide_volume": false,
+      "hotlist": true,
+      "interval": "D",
+      "locale": "en",
+      "save_image": true,
+      "style": "1",
+      "symbol": "TICKMILL:EURUSD",
+      "theme": "light",
+      "timezone": "Etc/UTC",
+      "backgroundColor": "#ffffff",
+      "gridColor": "rgba(46, 46, 46, 0.06)",
+      "watchlist": [
+        "OANDA:EURUSD",
+        "OANDA:GBPUSD",
+        "OANDA:AUDUSD",
+        "FX_IDC:CADUSD",
+        "FX_IDC:JPYUSD",
+        "FX_IDC:CNYUSD",
+        "FX_IDC:ZARUSD",
+        "FX_IDC:GHSUSD",
+        "FX_IDC:NGNUSD"
+      ],
+      "withdateranges": true,
+      "compareSymbols": [],
+      "studies": ["STD;Performance","STD;Technical%1Ratings"],
+      "autosize": true
+    }
+    </script>
+  </div>
+</section>
+
+<!-- Forex Heatmap -->
+<section id="forex-heatmap">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>
+    {
+      "colorTheme": "light",
+      "isTransparent": false,
+      "locale": "en",
+      "currencies": ["EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD","CNY","TRY","SEK","NOK","DKK","ZAR","HKD","SGD"],
+      "backgroundColor": "#ffffff",
+      "width": "100%",
+      "height": "100%"
+    }
+    </script>
+  </div>
+</section>
+
+<!-- ETF Heatmap -->
+<section id="etf-heatmap">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-etf-heatmap.js" async>
+    {
+      "dataSource": "AllUSEtf",
+      "blockSize": "volume",
+      "blockColor": "change",
+      "grouping": "asset_class",
+      "locale": "en",
+      "symbolUrl": "",
+      "colorTheme": "light",
+      "hasTopBar": true,
+      "isDataSetEnabled": true,
+      "isZoomEnabled": true,
+      "hasSymbolTooltip": true,
+      "isMonoSize": false,
+      "width": "100%",
+      "height": "100%"
+    }
+    </script>
+  </div>
+</section>
+
+<!-- Forex Screener -->
+<section id="forex-screener">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+    {
+      "market": "forex",
+      "showToolbar": true,
+      "defaultColumn": "overview",
+      "defaultScreen": "general",
+      "isTransparent": false,
+      "locale": "en",
+      "colorTheme": "light",
+      "width": "100%",
+      "height": "100%"
+    }
+    </script>
+  </div>
+</section>
+
+<!-- Market Overview -->
+<section id="market-overview">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+    {
+      "colorTheme": "light",
+      "dateRange": "12M",
+      "locale": "en",
+      "width": "100%",
+      "height": "100%"
+    }
+    </script>
+  </div>
+</section>
+
+<!-- Economic Calendar -->
+<section id="economic-calendar">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+    {
+      "colorTheme": "light",
+      "isTransparent": false,
+      "locale": "en",
+      "countryFilter": "ar,au,br,ca,cn,fr,de,in,id,it,jp,kr,mx,ru,sa,za,tr,gb,us,eu",
+      "importanceFilter": "0,1",
+      "width": "100%",
+      "height": "100%"
+    }
+    </script>
+  </div>
+</section>
+
+<!-- Top Stories -->
+<section id="top-stories">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+    {
+      "displayMode": "regular",
+      "feedMode": "all_symbols",
+      "colorTheme": "light",
+      "isTransparent": false,
+      "locale": "en",
+      "width": "100%",
+      "height": "100%"
+    }
+    </script>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 <a href="https://taplink.cc/philybotics/">𝐏𝐇𝐈𝐋𝐘𝐁𝐎𝐓𝐈𝐂𝐒™</a></p>
+  <p><a href="https://www.tradingview.com">©TRADINGVIEW</a></p>
+</footer>
+
+</body>
+</html>
